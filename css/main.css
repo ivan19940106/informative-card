@@ -22,11 +22,12 @@ img {
 }
 
 a {
-    color: #0E4749;
+    color: #81C7D4;
+    transition: all 0.4s;
 }
 
 a:hover {
-    color: #002626;
+    color: #51A8DD;
 }
 
 .main-content {
@@ -48,8 +49,13 @@ a:hover {
     width: 100%;
     height: auto;
     padding: 30px;
+    margin-top: 40px;
     border: 1px solid #05052F;
     transition: all 0.4s;
+}
+
+.card-grid:first-child {
+    margin-top: 0;
 }
 
 .card-grid:hover {
@@ -145,13 +151,25 @@ a:hover {
     line-height: 28px;
 }
 
+.copyright-wrapper {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 32px;
+}
+
 @media screen and (max-width: 767px) {
     .container {
         padding: 20px;
     }
 
     .card-grid {
+        margin-top: 20px;
         padding: 15px;
+    }
+
+    .card-grid:first-child {
+        margin-top: 0;
     }
 
     .card {
@@ -192,5 +210,11 @@ a:hover {
 
     .grid-content {
         margin-top: 5px;
+    }
+
+    .copyright-wrapper {
+        margin-top: 40px;
+        font-size: 12px;
+        line-height: 24px;
     }
 }
