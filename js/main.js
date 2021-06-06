@@ -18,12 +18,13 @@ $(document).ready(function(){
     });
 
     function screenshot(){
-        html2canvas(document.getElementById('card-screenshot')).then(function(canvas) {
+        var vp = document.getElementById("viewportMeta").getAttribute("content");
+        document.getElementById("viewportMeta").setAttribute("content", "width=375");
+        
+        html2canvas(document.getElementById('card-screenshot')).then(function(canvas){
             document.body.appendChild(canvas);
-            var a = document.createElement('a');
-            a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-            a.download = 'image.jpg';
-            a.click();
+        }).then(function () {
+            document.getElementById("viewportMeta").setAttribute("content", vp);
         });
     }
 });
