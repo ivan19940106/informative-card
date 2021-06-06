@@ -3,9 +3,22 @@ $(document).ready(function(){
     var thisYear = today.getFullYear();
     $('.copyright-year').text(thisYear);
 
+    $('.card-grid').click(function(e){
+        e.preventDefault();
+        if(window.location.search == '?ss=on'){
+            window.location.href = 'card_content.html?ss=on';
+        } else {
+            window.location.href = 'card_content.html';
+        }
+    });
+
     $('.prev-page-btn').click(function(e){
         e.preventDefault();
-        window.history.back();
+        if(window.location.search == '?ss=on'){
+            window.location.href = 'index.html?ss=on';
+        } else {
+            window.location.href = 'index.html';
+        }
     });
 
     if(window.location.search == '?ss=on'){
