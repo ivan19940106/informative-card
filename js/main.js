@@ -31,7 +31,7 @@ $(document).ready(function(){
     });
 
     // p5.js
-    var p5Switch = 1;
+    var p5Switch = 0;
     if(p5Switch === 1){
         enableP5();
     }
