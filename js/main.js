@@ -30,6 +30,12 @@ $(document).ready(function(){
         screenshot();
     });
 
+    // p5.js
+    var p5Switch = 1;
+    if(p5Switch === 1){
+        enableP5();
+    }
+
     function screenshot(){
         html2canvas(document.getElementById('card-screenshot')).then(function(canvas) {
             document.body.appendChild(canvas);
@@ -39,5 +45,10 @@ $(document).ready(function(){
             a.click();
             canvas.style.display='none';
         });
+    }
+
+    function enableP5(){
+        $('.image-content img').hide();
+        $('.image-content').attr('id', 'canvas-for-p5');
     }
 });
