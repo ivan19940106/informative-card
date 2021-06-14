@@ -76,7 +76,7 @@
             <!-- content-page -->
             <div v-if="path == 'content-page'" class="nav">
                 <a href="index.html" class="prev-page-btn" @click.prevent="toIndex">Go Back</a>
-                <a href="" class="save-screenshot" :class="{show : ssSwitch}" @click.prevent="screenshot">Screenshot!!</a>
+                <a href="" class="save-screenshot" :class="{show : ssSwitch == 'on'}" @click.prevent="screenshot">Screenshot!!</a>
             </div>
 
             <card-post v-if="path == 'content-page'" :card-data="activeCardData"></card-post>

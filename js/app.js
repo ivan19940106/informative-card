@@ -30,20 +30,6 @@ document.addEventListener("DOMContentLoaded", function(){
         data(){
             return {
                 db : '',
-                // fetch('./db/db.json', {
-                //     headers : { 
-                //         'Content-Type': 'application/json',
-                //         'Accept': 'application/json'
-                //     }
-                // })
-                // .then(response => {
-                //     return response.json();
-                // })
-                // .then(data => {
-                //     this.db = data;
-                // }).catch(error => {
-                //     console.log('There has been a problem with your fetch operation: ', error.message);
-                // }),
                 path : 'index',
                 activeCardData : '',
                 ssSwitch : 'off'
