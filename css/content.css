@@ -34,19 +34,24 @@
     display: block !important;
 }
 
-.grid-title {
+.grid-title-content-page {
     margin-top: 70px;
     font-size: 36px;
     line-height: 72px;
+    font-weight: normal;
 }
 
-.grid-content {
+.grid-content-content-page {
     display: block;
     max-height: none;
     height: auto;
     margin-top: 20px;
     font-size: 18px;
     line-height: 36px;
+}
+
+.source-wrapper {
+    margin-top: 35px;
 }
 
 @media screen and (max-width: 767px) {
@@ -65,13 +70,13 @@
         line-height: 20px;
     }
 
-    .grid-title {
+    .grid-title-content-page {
         margin-top: 30px;
         font-size: 28px;
         line-height: 50px;
     }
 
-    .grid-content {
+    .grid-content-content-page {
         margin-top: 10px;
         font-size: 16px;
         line-height: 35px;

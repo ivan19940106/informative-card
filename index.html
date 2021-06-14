@@ -5,46 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨🏻‍💻</text></svg>">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/content.css">
+
+    <script type="text/x-template" id="card-post">
+        <div class="card" id="card-screenshot">
+            <div class="card-image">
+                <div class="image-content">
+                    <img :src="cardData['image-content']" alt="">
+                </div>
+            </div>
+
+            <div class="card-text">
+                <h2 class="theme">
+                    {{cardData.theme}}
+                </h2>
+                <div class="info-wrapper">
+                    <div class="optional-label">
+                        {{cardData['optional-label']}}
+                    </div>
+                    <div class="info">
+                        {{cardData.info}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script src="https://unpkg.com/vue@next"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script> -->
+    <script  src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="js/app.js"></script>
     <script src="js/main.js"></script>
     <!-- <script src="js/sketch.js"></script> -->
 
     <title>資訊小卡</title>
 </head>
 <body>
-    <div class="main-content">
+    <div class="main-content" id="app">
         <div class="container">
-            <a href="card_content.html" class="card-grid">
+            <!-- index -->
+            <a v-if="path == 'index'" v-for="card in db.card" href="card_content.html" @click.prevent="toContentPage(card)" class="card-grid">
                 <div class="card">
                     <div class="card-image">
                         <div class="image-content">
-                            <img src="./images/nami.jpeg" alt="">
+                            <img :src="card['image-content']" alt="">
                         </div>
                     </div>
 
                     <div class="card-text">
                         <h2 class="theme">
-                            かながわおきなみうら
+                            {{card.theme}}
                         </h2>
                         <div class="info-wrapper">
                             <div class="optional-label">
-                                木刻版畫
+                                {{card['optional-label']}}
                             </div>
                             <div class="info">
-                                葛飾北齋 / Katsushika Hokusai
+                                {{card.info}}
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="grid-title">
-                    神奈川沖浪裏
+                    {{card['grid-title']}}
                 </div>
-                <div class="grid-content">
-                    《神奈川沖浪裏》是日本浮世繪畫家葛飾北齋的著名木刻版畫，出版於1831年至1833年間，是冨嶽三十六景系列作品。該畫以富士山為背景，描繪了「神奈川沖」（即神奈川外海，現橫濱市神奈川區對出的海面上）的巨浪掀卷著漁船，船工們爲了生存而努力抗爭的圖像，是葛飾北齋的代表作，也是舉世聞名的日本藝術作品[3]。該作品出版時印製了數千幅，但現存於世的估計僅有數百幅，部分收藏於大英博物館、大都會藝術博物館、東京國立博物館等大型博物館。
-                </div>
+                <div v-html="card['grid-content']" class="grid-content"></div>
             </a>
+
+            <!-- content-page -->
+            <div v-if="path == 'content-page'" class="nav">
+                <a href="index.html" class="prev-page-btn" @click.prevent="toIndex">Go Back</a>
+                <a href="" class="save-screenshot" :class="{show : ssSwitch}" @click.prevent="screenshot">Screenshot!!</a>
+            </div>
+
+            <card-post v-if="path == 'content-page'" :card-data="activeCardData"></card-post>
+
+            <div v-if="path == 'content-page'" class="grid-title-content-page">
+                {{activeCardData['grid-title']}}
+            </div>
+
+            <div v-if="path == 'content-page'" v-html="activeCardData['grid-content']" class="grid-content-content-page"></div>
+
+            <div v-if="path == 'content-page'" class="source-wrapper">
+                <span class="source">參考文獻：</span>
+                <a :href="activeCardData['source-link']" class="source-link" target="_blank">{{activeCardData.source}}</a>
+            </div>
 
             <div class="copyright-wrapper">
                 <span class="copyright">
