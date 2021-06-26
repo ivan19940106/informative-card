@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨🏻‍💻</text></svg>">
+    <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/content.css">
 
@@ -43,6 +44,13 @@
 <body>
     <div class="main-content" id="app">
         <div class="container">
+            <div class="ig-link-wrapper">
+                <a href="https://www.instagram.com/ivan19940106/" target="_blank" class="ig-link">
+                    <i class="icon-instagram"></i>
+                    <span class="instagram-account">@book_weekly</span>
+                </a>
+            </div>
+
             <!-- index -->
             <a v-if="path == 'index'" v-for="card in db.card" href="card_content.html" @click.prevent="toContentPage(card)" class="card-grid">
                 <div class="card">
@@ -94,7 +102,7 @@
 
             <div class="copyright-wrapper">
                 <span class="copyright">
-                    Copyright © <span class="copyright-year"></span> 電子辞書.ck., All Rights Reserved.
+                    Copyright © <span class="copyright-year"></span> 電子辞書.ck.,<div class="all-rights-reserved">&nbsp;All Rights Reserved.&nbsp;</div>
                 </span>
             </div>
         </div>
